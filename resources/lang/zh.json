@@ -1,0 +1,18 @@
+{
+  "tab_recentes": "亮点",
+  "tab_noticias": "新闻",
+  "tab_sobre": "关于",
+  "hint_busca": "搜索新闻",
+  "text_error": "连接错误",
+  "text_tentar_novamente": "再试一次",
+  "cat_geral": "常规",
+  "cat_esporte": "运动",
+  "cat_tecnologia": "技术",
+  "cat_entretenimento": "娱乐",
+  "cat_saude": "生活",
+  "cat_negocios": "商务",
+  "erro_busca": "没有找到新闻 :-(",
+  "text_info": "应用程序开发非盈利组织的目的是探索框架Flutter的潜力.",
+  "text_copy": "链接已复制.",
+  "text_fechar": "关闭"
+}
