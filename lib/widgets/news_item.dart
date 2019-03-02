@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_news/model/news/news.dart';
+import 'package:flutter_news/page/detail/detailes.dart';
 import 'package:flutter_news/util/DateUtil.dart';
 import 'package:flutter_news/util/funcations.dart';
 
@@ -8,14 +9,23 @@ class NewsItem extends StatelessWidget {
 
   NewsItem(this.news);
 
+  BuildContext _context;
+
   @override
   Widget build(BuildContext context) {
+    _context = context;
     // TODO: implement build
     return _getNewsItem();
   }
 
   Widget _getNewsItem() {
     return GestureDetector(
+      onTap: () {
+        Navigator.of(_context)
+            .push(new MaterialPageRoute(builder: (BuildContext context) {
+          return new DetailesPage(news);
+        }));
+      },
       child: Container(
         margin: EdgeInsets.only(left: 10.0, bottom: 10.0, right: 10.0),
         child: Material(
