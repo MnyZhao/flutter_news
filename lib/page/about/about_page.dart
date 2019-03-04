@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_news/localization/MyLocalizations.dart';
+import 'package:flutter_news/localization/my_locations.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 
@@ -12,7 +12,7 @@ class _InfoState extends State<Info> with TickerProviderStateMixin {
 
   AnimationController animationController;
   Animation<double> animation;
-  MyLocalizations strl;
+  MyLocation strl;
 
   @override
   void initState() {
@@ -32,7 +32,7 @@ class _InfoState extends State<Info> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
 
-    strl = MyLocalizations.of(context);
+    strl = MyLocation.of(context);
 
     return new ScaleTransition(
       scale: animation,
@@ -101,5 +101,11 @@ class _InfoState extends State<Info> with TickerProviderStateMixin {
 
   _launchURL(url) async {
     await launch(url);
+  }
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    animationController.dispose();
   }
 }

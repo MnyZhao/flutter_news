@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_news/localization/MyLocalizations.dart';
+import 'package:flutter_news/localization/my_locations.dart';
 import 'package:flutter_news/page/search/search_page.dart';
 
 class Search extends StatelessWidget {
   BuildContext _context;
   TextEditingController _controller = new TextEditingController();
-  MyLocalizations mLanguage;
+  MyLocation mLanguage;
 
   submit(query) {
     Navigator.of(_context)
@@ -16,7 +16,7 @@ class Search extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    mLanguage = MyLocalizations.of(context);
+    mLanguage = MyLocation.of(context);
     _context = context;
     // TODO: implement build
     return Container(

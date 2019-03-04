@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_news/localization/MyLocalizations.dart';
+import 'package:flutter_news/localization/my_locations.dart';
 import 'package:flutter_news/model/news/news.dart';
 import 'package:flutter_news/net/news_resository.dart';
 import 'package:flutter_news/widgets/news_item.dart';
@@ -24,7 +24,7 @@ class SearchPageState extends State<SearchPage> with TickerProviderStateMixin {
   List<News> list = new List();
   static bool prod = true;
   NewsResository resository = NewsResository(prod);
-  MyLocalizations language;
+  MyLocation language;
   bool isLoadOver = false;
   bool isEmpty = false; //默认不是空
   AnimationController animationController;
@@ -51,7 +51,7 @@ class SearchPageState extends State<SearchPage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    language = MyLocalizations.of(context);
+    language = MyLocation.of(context);
     // TODO: implement build
     return Scaffold(
         appBar: AppBar(
@@ -96,5 +96,11 @@ class SearchPageState extends State<SearchPage> with TickerProviderStateMixin {
             ),
           )
         : Container();
+  }
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    animationController.dispose();
   }
 }

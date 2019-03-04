@@ -5,13 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 //根据设备加载对应语言的类
-class MyLocalizations {
-  MyLocalizations(this.locale);
+class MyLocation {
+  MyLocation(this.locale);
 
   final Locale locale;
 
-  static MyLocalizations of(BuildContext context) {
-    return Localizations.of<MyLocalizations>(context, MyLocalizations);
+  static MyLocation of(BuildContext context) {
+    return Localizations.of<MyLocation>(context, MyLocation);
   }
 
   Map<String, String> _sentences;

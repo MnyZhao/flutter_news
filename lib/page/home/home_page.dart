@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_news/page/about/about_page.dart';
+import 'package:flutter_news/page/hot/hot_sport_page.dart';
+import 'package:flutter_news/page/news/news_page.dart';
 import 'package:flutter_news/widgets/bottom_navigation.dart';
 import 'package:flutter_news/widgets/search.dart';
 
@@ -14,7 +16,7 @@ class HomePage extends StatefulWidget {
 class HomePageState extends State<HomePage> {
   List<Widget> list = [
     page('1'),
-    page('2'),
+    NewsPage(),
     Info(),
   ];
   int _index = 0;

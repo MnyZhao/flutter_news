@@ -1,14 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_news/localization/MyLocalizationsDelegate.dart';
+import 'package:flutter_news/localization/locations_delegate.dart';
 import 'package:flutter_news/page/home/home_page.dart';
 import 'package:flutter_news/widgets/bottom_navigation.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  MyLocalizationsDelegate myLocation = const MyLocalizationsDelegate();
+  MyLocationDelegate myLocation = const MyLocationDelegate();
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
         accentColor: Colors.pinkAccent,
       ),
       //多语言配置
-      supportedLocales: MyLocalizationsDelegate.supportedLocales(),
+      supportedLocales: MyLocationDelegate.supportedLocales(),
       localizationsDelegates: [
         myLocation,
         DefaultCupertinoLocalizations.delegate,

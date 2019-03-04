@@ -1,18 +1,19 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_news/localization/MyLocalizations.dart';
+import 'package:flutter_news/localization/my_locations.dart';
 
-class MyLocalizationsDelegate extends LocalizationsDelegate<MyLocalizations> {
-  const MyLocalizationsDelegate();
+
+class MyLocationDelegate extends LocalizationsDelegate<MyLocation> {
+  const MyLocationDelegate();
 
   @override
   bool isSupported(Locale locale) =>
       ['en', 'zh', 'pt'].contains(locale.languageCode);
 
   @override
-  Future<MyLocalizations> load(Locale locale) async {
-    MyLocalizations localizations = new MyLocalizations(locale);
+  Future<MyLocation> load(Locale locale) async {
+    MyLocation localizations = new MyLocation(locale);
     await localizations.load();
 
     print("Load ${locale.languageCode}");
@@ -21,7 +22,7 @@ class MyLocalizationsDelegate extends LocalizationsDelegate<MyLocalizations> {
   }
 
   @override
-  bool shouldReload(MyLocalizationsDelegate old) => false;
+  bool shouldReload(MyLocationDelegate old) => false;
 
   Locale resolution(Locale locale, Iterable<Locale> supportedLocales) {
     for (Locale supportedLocale in supportedLocales) {

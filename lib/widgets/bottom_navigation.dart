@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_news/localization/MyLocalizations.dart';
+import 'package:flutter_news/localization/my_locations.dart';
 
 class BottomNavigation extends StatefulWidget {
   final callback;
@@ -15,11 +15,11 @@ class BottomNavigation extends StatefulWidget {
 
 class BottomNavigationState extends State<BottomNavigation> {
   int _index = 0;
-  MyLocalizations mLanguage;
+  MyLocation mLanguage;
 
   @override
   Widget build(BuildContext context) {
-    mLanguage = MyLocalizations.of(context);
+    mLanguage = MyLocation.of(context);
     // TODO: implement build
     return BottomNavigationBar(
       items: <BottomNavigationBarItem>[
