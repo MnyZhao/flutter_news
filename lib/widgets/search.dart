@@ -28,7 +28,9 @@ class Search extends StatelessWidget {
         children: <Widget>[
           Expanded(
             child: TextField(
-              cursorColor: Colors.lightGreen, //光标颜色
+              textInputAction: TextInputAction.search,
+              cursorColor: Colors.lightGreen,
+              //光标颜色
               decoration: InputDecoration(
                   border: InputBorder.none,
                   hintText: mLanguage.trans('hint_busca'),
@@ -41,7 +43,8 @@ class Search extends StatelessWidget {
                       new MaterialPageRoute(builder: (BuildContext context) {
                     return SearchPage.create(value);
                   }))*/
-              onSubmitted: submit, //也可像上面那样写
+              onSubmitted: submit,
+              //也可像上面那样写
               controller: _controller,
             ),
           )

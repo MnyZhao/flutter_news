@@ -42,19 +42,7 @@ class HotSportPageState extends State<HotSportPage> {
     // TODO: implement build
     return Stack(
       children: <Widget>[
-        RefreshIndicator(
-            child: _getPageview(listNews),
-            onRefresh: () {
-              print('Refresh current');
-              resository.loadRect().then((list) {
-                setState(() {
-                  isLoadOver = true;
-                  listNews = list;
-                });
-              }).catchError((error) {
-                isLoadOver = true;
-              });
-            }),
+        _getPageview(listNews),
 //        _getPageview(listNews),
         _getProgressWidget(isLoadOver),
         _getEmptyWidget(isEmpty),

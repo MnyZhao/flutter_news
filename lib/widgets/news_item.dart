@@ -45,7 +45,7 @@ class NewsItem extends StatelessWidget {
         children: <Widget>[
           Hero(
             tag: news.title,
-            child: _getImageWidget(news.img),
+            child: _getImageWidget(Functions.getImgResizeUrl(news.img, 200, 200)),
           ),
           _getTextColumn(),
         ],

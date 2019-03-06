@@ -46,7 +46,7 @@ class DetailesPage extends StatelessWidget {
             Hero(
               tag: news.title,
               child: _getHeaderImage(
-                Functions.getImgResizeUrl(news.img, 200, ""),
+                Functions.getImgResizeUrl(news.img, 250, ""),
               ),
             ),
             _getColumnText(news),

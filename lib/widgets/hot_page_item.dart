@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_news/model/news/news.dart';
+import 'package:flutter_news/page/detail/detailes.dart';
 import 'package:flutter_news/util/funcations.dart';
 
 class HotItem extends StatefulWidget {
@@ -25,22 +26,30 @@ class HotItemState extends State<HotItem> {
   }
 
   Widget _getBody() {
-    return Padding(
-      padding: EdgeInsets.symmetric(vertical: 16.0, horizontal: 8.0),
-      child: Material(
-        borderRadius: BorderRadius.all(Radius.circular(8.0)),
-        elevation: 3,
-        child: Stack(
-          fit: StackFit.expand,
-          children: <Widget>[
-            Hero(
-              tag: widget.news.title,
-              child: _getImageNet(
-                  Functions.getImgResizeUrl(widget.news.img, 400, '')),
-            ),
-            _getGradient(),
-            _getText(_context),
-          ],
+    return GestureDetector(
+      onTap: () {
+        Navigator.of(_context)
+            .push(MaterialPageRoute(builder: (BuildContext context) {
+          return DetailesPage(widget.news);
+        }));
+      },
+      child: Padding(
+        padding: EdgeInsets.symmetric(vertical: 16.0, horizontal: 8.0),
+        child: Material(
+          borderRadius: BorderRadius.all(Radius.circular(8.0)),
+          elevation: 3,
+          child: Stack(
+            fit: StackFit.expand,
+            children: <Widget>[
+              Hero(
+                tag: widget.news.title,
+                child: _getImageNet(
+                    Functions.getImgResizeUrl(widget.news.img, 200, '')),
+              ),
+              _getGradient(),
+              _getText(_context),
+            ],
+          ),
         ),
       ),
     );
@@ -122,7 +131,7 @@ class HotItemState extends State<HotItem> {
             ),
             Padding(
               padding: EdgeInsets.only(top: 16.0),
-              child: Text(widget.news.description,
+              child: Text(widget.news.title,
                   textAlign: TextAlign.center,
                   style: textTheme.caption.copyWith(
                       fontSize: 18.0,
