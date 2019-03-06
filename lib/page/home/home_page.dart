@@ -15,7 +15,7 @@ class HomePage extends StatefulWidget {
 
 class HomePageState extends State<HomePage> {
   List<Widget> list = [
-    page('1'),
+    HotSportPage(),
     NewsPage(),
     Info(),
   ];

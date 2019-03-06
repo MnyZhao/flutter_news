@@ -7,6 +7,10 @@ class NewsResository {
 
   NewsResository(this._prod);
 
+  Future<List<News>> loadRect() async {
+    return _prod ? _serverNewsRecent() : _localRect;
+  }
+
   /**
    * 加载新闻
    */
@@ -19,6 +23,14 @@ class NewsResository {
    */
   Future<List<News>> loadSearch(String query) async {
     return _prod ? _serverSearch(query) : _localSearch();
+  }
+
+  Future<List<News>> _serverNewsRecent() async {
+    final Map result = await _api.get("/notice/news/recent");
+
+    return result['data']
+        .map<News>((notice) => new News.fromJson(notice))
+        .toList();
   }
 
   Future<List<News>> _serverNews(String category, int page) async {
@@ -38,6 +50,10 @@ class NewsResository {
     } else {
       return List();
     }
+  }
+
+  _localRect() {
+    return new List();
   }
 
   _localSearch() {

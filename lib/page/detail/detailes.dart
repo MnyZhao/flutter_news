@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_news/model/news/news.dart';
-import 'package:flutter_news/util/DateUtil.dart';
+import 'package:flutter_news/util/date_util.dart';
 import 'package:flutter_news/util/funcations.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:share/share.dart';
