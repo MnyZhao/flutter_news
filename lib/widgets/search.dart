@@ -39,12 +39,8 @@ class Search extends StatelessWidget {
                     Icons.search,
                     color: Colors.redAccent,
                   )),
-              /*(value) => Navigator.of(_context).push(
-                      new MaterialPageRoute(builder: (BuildContext context) {
-                    return SearchPage.create(value);
-                  }))*/
               onSubmitted: submit,
-              //也可像上面那样写
+              maxLines: 1,
               controller: _controller,
             ),
           )

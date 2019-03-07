@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_news/model/news/news.dart';
 import 'package:flutter_news/page/detail/detailes.dart';
 import 'package:flutter_news/util/funcations.dart';
+import 'package:flutter_news/widgets/page_view/page_transformer.dart';
 
 class HotItem extends StatefulWidget {
   News news;
+  PageVisibility pageVisibility;
 
-  HotItem(this.news);
+  HotItem({this.news, this.pageVisibility});
 
   @override
   State<StatefulWidget> createState() {
@@ -87,10 +89,10 @@ class HotItemState extends State<HotItem> {
             placeholder: 'assets/place_holder.jpg',
             image: url,
             fit: BoxFit.cover,
-            /* alignment: new FractionalOffset(
-              0.5 + (pageVisibility.pagePosition / 3),
+            alignment: new FractionalOffset(
+              0.5 + (widget.pageVisibility.pagePosition / 3),
               0.5,
-            ),*/
+            ),
           ),
         );
       } else {
@@ -119,26 +121,48 @@ class HotItemState extends State<HotItem> {
         right: 32.0,
         child: Column(
           children: <Widget>[
-            Text(
-              widget.news.category,
-              textAlign: TextAlign.center,
-              style: textTheme.caption.copyWith(
-                color: Colors.white70,
-                fontWeight: FontWeight.bold,
-                letterSpacing: 2.0,
-                fontSize: 14.0,
+            _getTransWidget(
+              translationFactor: 300,
+              child: Text(
+                widget.news.category,
+                textAlign: TextAlign.center,
+                style: textTheme.caption.copyWith(
+                  color: Colors.white70,
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 2.0,
+                  fontSize: 14.0,
+                ),
               ),
             ),
-            Padding(
-              padding: EdgeInsets.only(top: 16.0),
-              child: Text(widget.news.title,
-                  textAlign: TextAlign.center,
-                  style: textTheme.caption.copyWith(
-                      fontSize: 18.0,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white)),
-            )
+            _getTransWidget(
+                translationFactor: 300,
+                child: Padding(
+                  padding: EdgeInsets.only(top: 16.0),
+                  child: Text(widget.news.title,
+                      textAlign: TextAlign.center,
+                      style: textTheme.caption.copyWith(
+                          fontSize: 18.0,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white)),
+                )),
           ],
         ));
+  }
+
+  Widget _getTransWidget(
+      {@required double translationFactor, @required Widget child}) {
+   //随着页面展示移动的像素 通过matrix计算的不是
+    final double xTranslation =
+        widget.pageVisibility.pagePosition * translationFactor;
+    print("position" + widget.pageVisibility.pagePosition.toString());
+    return Opacity(
+      opacity: widget.pageVisibility.visibleFraction, //透明度的变化
+      child: Transform(
+        alignment: FractionalOffset.topLeft,
+        transform: Matrix4.translationValues(xTranslation, 0.0, 0.0),
+        child: child,
+      ),
+      /* */
+    );
   }
 }

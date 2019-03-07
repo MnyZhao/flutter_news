@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_news/localization/my_locations.dart';
 import 'package:flutter_news/model/news/news.dart';
 import 'package:flutter_news/net/news_resository.dart';
-import 'package:flutter_news/widgets/hot_page_item.dart';
+import 'package:flutter_news/widgets/page_view/hot_page_item.dart';
+import 'package:flutter_news/widgets/page_view/page_transformer.dart';
 
 class HotSportPage extends StatefulWidget {
   @override
@@ -51,12 +52,17 @@ class HotSportPageState extends State<HotSportPage> {
   }
 
   Widget _getPageview(List<News> list) {
-    return PageView.builder(
-        itemCount: list.length,
-        controller: PageController(viewportFraction: 0.8),
-        itemBuilder: (context, index) {
-          return HotItem(list[index]);
-        });
+    return PageTransformer(pageViewBuilder: (context, visibilityResolver) {
+      return PageView.builder(
+          itemCount: list.length,
+          controller: PageController(viewportFraction: 0.9),
+          itemBuilder: (context, index) {
+            return HotItem(
+                news: list[index],
+                pageVisibility:
+                    visibilityResolver.resolvePageVisibility(index));
+          });
+    });
   }
 
   /**
