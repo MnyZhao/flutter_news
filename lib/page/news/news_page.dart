@@ -55,12 +55,18 @@ class NewsPageState extends State<NewsPage> with TickerProviderStateMixin {
   Widget _getBody() {
     return Stack(
       children: <Widget>[
-        _getTranslateList(),
+        RefreshIndicator(child: _getTranslateList(), onRefresh: MyRefresh),
         _getProgressWidget(_isLoadOver),
         _getEmptyWidget(_isEmpty),
         _getCustomTab(),
       ],
     );
+  }
+
+  Future<Null> MyRefresh() async {
+    _isMore = false;
+    newsList.clear();
+    await loadNews(_categories[selected]);
   }
 
   Widget _getTranslateList() {
