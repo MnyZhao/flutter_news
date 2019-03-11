@@ -46,6 +46,9 @@ class SearchPageState extends State<SearchPage> with TickerProviderStateMixin {
         list.addAll(listValue);
         animationController.forward();
       });
+    }).catchError((onError){
+      isEmpty = true;
+      isLoadOver = true;
     });
   }
 

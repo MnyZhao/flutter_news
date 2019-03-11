@@ -9,7 +9,7 @@ class Api {
 
   Future<dynamic> get(String url, {Map<String, String> headers}) async {
     try {
-      http.Response response = await http.get(urlBase + url, headers: headers);
+      http.Response response = await http.get(urlBase + url, headers: headers).timeout(Duration(milliseconds: 10000));
       final statusCode = response.statusCode;
       if (statusCode < 200 || statusCode >= 300 || response.body == null) {
         throw new FetchDataException("Error request:", statusCode);
