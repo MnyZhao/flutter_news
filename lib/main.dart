@@ -14,6 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     print('日志');
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter News',
       theme: ThemeData(
         primarySwatch: Colors.red,
