@@ -23,12 +23,14 @@ class MyApp extends StatelessWidget {
       ),
       //多语言配置
       supportedLocales: MyLocationDelegate.supportedLocales(),
+      // 配置代理类
       localizationsDelegates: [
-        myLocation,
-        DefaultCupertinoLocalizations.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
+        myLocation,// 我们自己的翻译 比如要显示的文本等
+        DefaultCupertinoLocalizations.delegate,//Cupertino widgets.的英语翻译
+        GlobalMaterialLocalizations.delegate,//Material widgets.的英语翻译
+        GlobalWidgetsLocalizations.delegate,// 本地化Widget 的翻译
       ],
+      //通过localeResolutionCallback或localeListResolutionCallback回调来监听locale改变的事件
       localeResolutionCallback: myLocation.resolution,
       home: HomePage(),
 
